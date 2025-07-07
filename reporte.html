@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Realiza tu reporte - Waste Wise Routes</title>
+  <link rel="stylesheet" href="assets/styles/reporte.css"/>
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    crossorigin=""
+  />
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    crossorigin=""
+  />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon">📍</div>
+      <span>Waste Wise Routes</span>
+    </div>
+    <div class="profile-icon">👤</div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <section class="report-section">
+      <div class="section-header">
+        <h2>Realiza tu reporte</h2>
+        <i class="fas fa-edit"></i>
+      </div>
+
+      <!-- MAP -->
+      <div class="map-container">
+        <div id="map"></div>
+        <div class="map-marker"><i class="fas fa-map-marker-alt"></i></div>
+      </div>
+
+      <!-- FORM -->
+      <div class="form-section">
+        <div class="photo-section">
+          <button class="photo-btn" id="btnCamera">
+            <i class="fas fa-camera"></i><span>Tomar foto</span>
+          </button>
+          <button class="photo-btn secondary" id="btnUpload">
+            <i class="fas fa-upload"></i><span>Subir imagen</span>
+          </button>
+        </div>
+        <div class="photo-preview" id="photoPreview" style="display:none;">
+          <img id="previewImg" src="" alt="Foto"/>
+          <button class="remove-photo" id="btnRemove">✕</button>
+        </div>
+
+        <div class="form-fields">
+          <div class="form-group">
+            <label for="description">Descripción</label>
+            <input type="text" id="description" placeholder="Describe el problema"/>
+          </div>
+          <div class="form-group">
+            <label for="address">Dirección</label>
+            <input type="text" id="address" placeholder="Lat, Lng" readonly/>
+          </div>
+          <div class="form-group">
+            <label for="date">Fecha</label>
+            <input type="date" id="date"/>
+          </div>
+        </div>
+        <button class="submit-btn" id="btnSubmit">ENVIAR</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER NAV -->
+  <nav class="bottom-nav">
+    <a href="inicio-plataforma.html" class="nav-item">
+      <div class="nav-icon">🏠</div>
+      <div class="nav-label">Inicio</div>
+    </a>
+    <a href="reporte.html" class="nav-item">
+      <div class="nav-icon">📋</div>
+      <div class="nav-label">Reportes</div>
+    </a>
+    <a href="historial.html" class="nav-item active">
+      <div class="nav-icon">📊</div>
+      <div class="nav-label">Historial</div>
+    </a>
+    <a href="cuenta.html" class="nav-item">
+      <div class="nav-icon">👤</div>
+      <div class="nav-label">Cuenta</div>
+    </a>
+  </nav>
+
+  <!-- CAMERA MODAL -->
+  <div class="camera-modal" id="cameraModal" style="display:none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Tomar foto</h3>
+        <button class="close-modal" id="closeCamera">✕</button>
+      </div>
+      <video id="cameraVideo" autoplay playsinline></video>
+      <button class="camera-action" id="captureBtn">📷 Capturar</button>
+    </div>
+  </div>
+
+  <!-- HIDDEN FILE INPUT -->
+  <input type="file" id="fileInput" accept="image/*" style="display:none;"/>
+
+  <!-- SCRIPTS -->
+  <script
+    src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    crossorigin=""
+  ></script>
+  <script src="assets/scripts/reporte.js"></script>
+</body>
+</html>

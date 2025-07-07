@@ -1,0 +1,112 @@
+/* Reset y variables */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --green: #61b032;
+  --dark-green: #4d8a27;
+  --white: #fff;
+  --gray-light: #f5f5f5;
+  --text-dark: #333;
+  --text-light: #666;
+  --btn-red: #d32f2f;
+}
+
+/* Body y fondo */
+body {
+  font-family: Arial, sans-serif;
+  background: var(--gray-light);
+  color: var(--text-dark);
+  padding-bottom: 70px; /* espacio nav */
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--green);
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.logo { display: flex; align-items: center; gap: 0.5rem; }
+.logo-icon { font-size: 1.4rem; }
+.profile-icon { font-size: 1.4rem; cursor: pointer; color: var(--white); }
+
+/* Contenedor principal */
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+/* Tarjeta de perfil */
+.profile-card {
+  background: var(--white);
+  width: 100%;
+  max-width: 360px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+.avatar {
+  font-size: 3rem;
+  background: var(--green);
+  color: var(--white);
+  width: 64px; height: 64px;
+  line-height: 64px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+}
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--dark-green);
+}
+.card-body p {
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+.label {
+  font-weight: bold;
+  color: var(--text-light);
+}
+
+/* Botón cerrar sesión */
+.btn-logout {
+  margin-top: 1.5rem;
+  background: var(--btn-red);
+  color: var(--white);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-logout:hover {
+  background: #b71c1c;
+}
+
+/* Navegación inferior */
+.bottom-nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--green);
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem 0;
+  box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+}
+.nav-item {
+  text-decoration: none;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.75rem;
+}
+.nav-item.active {
+  color: var(--dark-green);
+}
+.nav-icon { font-size: 1.4rem; }

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar Sesión – Waste Wise Routes</title>
+  <link rel="stylesheet" href="assets/styles/main.css">
+  <link rel="stylesheet" href="assets/styles/auth.css">
+</head>
+<body>
+ 
+
+  <!-- Página de Login -->
+  <main class="login-page">
+    <div class="login-container">
+      <div class="login-form-section">
+        <div class="logo">
+          <img src="assets/images/image 3.png" alt="Logo" class="logo-icon" />
+          <span class="logo-text">Waste Wise Routes</span>
+        </div>
+        <h1 class="login-title">Iniciar Sesión</h1>
+        <form class="login-form" id="loginForm">
+          <label for="e-mail">E-mail</label>
+          <input id="e-mail" type="email" placeholder="Dirección de e-mail" required />
+          <label for="password">Contraseña</label>
+          <input id="password" type="password" placeholder="Contraseña" required />
+          <button type="submit" class="btn-login-primary">Iniciar Sesión</button>
+        </form>
+        <div class="separator"><span>or</span></div>
+        <div class="social-login">
+          <button class="btn-social btn-google" id="googleLogin">Google</button>
+          <button class="btn-social btn-facebook" id="facebookLogin">Facebook</button>
+        </div>
+        <p class="signup-link">
+          ¿No tienes cuenta? <a href="registro.html">Regístrate</a>
+        </p>
+      </div>
+      <div class="login-info-section">
+        <h2 class="info-title">
+          Gestión de residuos inteligente<br/>
+          para un futuro más sostenible
+        </h2>
+        <img
+          src="assets/images/Group 427320712.png"
+          alt="Camión de residuos"
+          class="info-illustration"
+        />
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Función para manejar el login
+    function handleLogin(event) {
+      event.preventDefault();
+      
+      const email = document.getElementById('e-mail').value;
+      const password = document.getElementById('password').value;
+      
+      // Validación básica
+      if (!email || !password) {
+        showNotification('Por favor completa todos los campos', 'error');
+        return;
+      }
+      
+      // Validar formato de email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showNotification('Por favor ingresa un email válido', 'error');
+        return;
+      }
+      
+      // Mostrar loading
+      const submitButton = document.querySelector('.btn-login-primary');
+      const originalText = submitButton.textContent;
+      submitButton.textContent = 'Iniciando sesión...';
+      submitButton.disabled = true;
+      
+      // Simular proceso de login
+      setTimeout(() => {
+        // Aquí puedes agregar la lógica de autenticación real
+        console.log('Login attempt:', { email, password });
+        
+        // Mostrar notificación de éxito
+        showNotification('Inicio de sesión exitoso', 'success');
+        
+        // Redirigir a la plataforma
+        setTimeout(() => {
+          window.location.href = 'inicio-plataforma.html';
+        }, 1000);
+        
+      }, 1500);
+    }
+    
+    // Función para manejar login social
+    function handleSocialLogin(provider) {
+      showNotification(`Iniciando sesión con ${provider}...`, 'info');
+      
+      // Simular proceso de login social
+      setTimeout(() => {
+        console.log(`Social login with ${provider}`);
+        showNotification('Inicio de sesión exitoso', 'success');
+        
+        setTimeout(() => {
+          window.location.href = 'inicio-plataforma.html';
+        }, 1000);
+      }, 1500);
+    }
+    
+    // Función para mostrar notificaciones
+    function showNotification(message, type = 'info') {
+      const notification = document.createElement('div');
+      notification.className = `notification notification-${type}`;
+      
+      let backgroundColor;
+      switch(type) {
+        case 'success':
+          backgroundColor = '#4CAF50';
+          break;
+        case 'error':
+          backgroundColor = '#f44336';
+          break;
+        case 'info':
+          backgroundColor = '#2196F3';
+          break;
+        default:
+          backgroundColor = '#4CAF50';
+      }
+      
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${backgroundColor};
+        color: white;
+        padding: 15px 20px;
+        border-radius: 10px;
+        font-weight: 600;
+        z-index: 1000;
+        animation: slideInRight 0.3s ease-out;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        max-width: 350px;
+      `;
+      
+      notification.textContent = message;
+      document.body.appendChild(notification);
+      
+      // Remover notificación después de 3 segundos
+      setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.3s ease-out forwards';
+        setTimeout(() => {
+          if (document.body.contains(notification)) {
+            document.body.removeChild(notification);
+          }
+        }, 300);
+      }, 3000);
+    }
+    
+    // Función para manejar errores
+    function handleError(error, context) {
+      console.error(`Error en ${context}:`, error);
+      showNotification('Ha ocurrido un error. Por favor, inténtalo de nuevo.', 'error');
+      
+      // Restaurar botón si hay error
+      const submitButton = document.querySelector('.btn-login-primary');
+      if (submitButton) {
+        submitButton.textContent = 'Iniciar Sesión';
+        submitButton.disabled = false;
+      }
+    }
+    
+    // Configurar eventos cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', function() {
+      try {
+        // Configurar formulario de login
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+          loginForm.addEventListener('submit', handleLogin);
+        }
+        
+        // Configurar botones de login social
+        const googleButton = document.getElementById('googleLogin');
+        if (googleButton) {
+          googleButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            handleSocialLogin('Google');
+          });
+        }
+        
+        const facebookButton = document.getElementById('facebookLogin');
+        if (facebookButton) {
+          facebookButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            handleSocialLogin('Facebook');
+          });
+        }
+        
+        // Configurar efectos de hover para los botones
+        const buttons = document.querySelectorAll('.btn-login-primary, .btn-social');
+        buttons.forEach(button => {
+          button.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+          });
+          
+          button.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+          });
+        });
+        
+        // Manejar Enter en los campos de input
+        const inputs = document.querySelectorAll('input[type="email"], input[type="password"]');
+        inputs.forEach(input => {
+          input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+              handleLogin(e);
+            }
+          });
+        });
+        
+        console.log('Login page loaded successfully');
+        
+      } catch (error) {
+        handleError(error, 'DOMContentLoaded');
+      }
+    });
+    
+    // Manejar errores globales
+    window.addEventListener('error', function(event) {
+      handleError(event.error, 'Global Error');
+    });
+    
+    // Agregar animaciones CSS
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      
+      @keyframes slideOutRight {
+        from {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+      
+      .btn-login-primary:hover,
+      .btn-social:hover {
+        transition: transform 0.2s ease;
+      }
+      
+      .btn-login-primary:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      
+      .notification {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+  
+  <script src="assets/scripts/main.js"></script>
+</body>
+</html>

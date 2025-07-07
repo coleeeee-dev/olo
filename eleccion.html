@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Wise Routes</title>
+    <link rel="stylesheet" href="assets/styles/eleccion.css">
+</head>
+<body>
+    <div class="container loading">
+        <div class="header">
+            <h1>
+                <img src="assets/images/image 3.png" alt="Waste Wise Routes Logo" class="logo">
+                Waste Wise Routes
+            </h1>
+        </div>
+        
+        <div class="illustration">
+            <div class="scene">
+                <div class="buildings">🏢</div>
+                <div class="person">🧑‍💼</div>
+                <div class="truck">🚛</div>
+                <div class="recycling-bin">♻️</div>
+                <div class="route-line"></div>
+                <div class="route-dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p class="join-text">Deseas ingresar como</p>
+            
+            <div class="buttons">
+                <button class="btn btn-primary" onclick="selectRole('ciudadano')">
+                    <span class="icon">👤</span>
+                    Ciudadano
+                </button>
+                
+                <button class="btn btn-secondary" onclick="selectRole('empresa')">
+                    <span class="icon">🏢</span>
+                    Empresa
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/scripts/eleccion.js"></script>
+</body>
+</html>

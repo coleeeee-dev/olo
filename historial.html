@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Waste Wise Routes – Historial</title>
+  <link rel="stylesheet" href="assets/styles/historial.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon">📍</div>
+      <span>Waste Wise Routes</span>
+    </div>
+    <div class="notification-icon">🔔</div>
+  </header>
+
+  <main class="main-content">
+    <section class="reports-section">
+      <h2 class="section-title">Mis Reportes 📝</h2>
+      <p class="section-subtitle">Revisa el estado de tus reportes</p>
+
+      <div class="tabs">
+        <button class="tab active" data-status="completado">Completado</button>
+        <button class="tab" data-status="pendiente">Pendiente</button>
+      </div>
+
+      <div class="reports-list">
+        <!-- Ejemplo de tarjeta completada -->
+        <div class="report-card" data-status="completado">
+          <img src="assets/images/Contaminación_en_Maracaibo,_Venezuela.jpg" alt="foto reporte" class="card-img">
+          <div class="card-info">
+            <strong>Batticaloa, Sri Lanka</strong>
+            <span>Ate</span>
+            <small>30/04/25</small>
+          </div>
+          <button class="btn-details">Detalles</button>
+        </div>
+
+        <!-- Ejemplo de tarjeta pendiente -->
+        <div class="report-card" data-status="pendiente">
+          <img src="assets/images/Contaminación_en_Maracaibo,_Venezuela.jpg" alt="foto reporte" class="card-img">
+          <div class="card-info">
+            <strong>San Miguel</strong>
+            <span>Lince</span>
+            <small>02/05/25</small>
+          </div>
+          <button class="btn-details">Detalles</button>
+        </div>
+
+        <!-- Añade más tarjetas con data-status="completado" o "pendiente" -->
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="inicio-plataforma.html" class="nav-item">
+      <div class="nav-icon">🏠</div>
+      <div class="nav-label">Inicio</div>
+    </a>
+    <a href="reporte.html" class="nav-item">
+      <div class="nav-icon">📋</div>
+      <div class="nav-label">Reportes</div>
+    </a>
+    <a href="historial.html" class="nav-item active">
+      <div class="nav-icon">📊</div>
+      <div class="nav-label">Historial</div>
+    </a>
+    <a href="cuenta.html" class="nav-item">
+      <div class="nav-icon">👤</div>
+      <div class="nav-label">Cuenta</div>
+    </a>
+  </nav>
+
+  <script>
+    // Lógica simple para filtrar tarjetas según pestaña
+    document.querySelectorAll('.tabs .tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        // activar pestaña
+        document.querySelectorAll('.tabs .tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const status = tab.getAttribute('data-status');
+        // mostrar/ocultar tarjetas
+        document.querySelectorAll('.report-card').forEach(card => {
+          card.style.display = card.getAttribute('data-status') === status
+            ? 'flex'
+            : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

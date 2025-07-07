@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Waste Wise Routes – Mi Cuenta</title>
+  <link rel="stylesheet" href="assets/styles/cuenta.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon">📍</div>
+      <span>Waste Wise Routes</span>
+    </div>
+    <div class="profile-icon">👤</div>
+  </header>
+
+  <main class="main-content">
+    <div class="profile-card">
+      <div class="avatar">👤</div>
+      <h1 class="card-title">Mi Perfil</h1>
+      <div class="card-body">
+        <p><span class="label">Nombre:</span> Juan Pérez</p>
+        <p><span class="label">Email:</span> juan@example.com</p>
+        <p><span class="label">Reportes totales:</span> 15</p>
+      </div>
+      <button class="btn-logout" onclick="logout()">Cerrar sesión</button>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="inicio-plataforma.html" class="nav-item">
+      <div class="nav-icon">🏠</div>
+      <div class="nav-label">Inicio</div>
+    </a>
+    <a href="reporte.html" class="nav-item">
+      <div class="nav-icon">📋</div>
+      <div class="nav-label">Reportes</div>
+    </a>
+    <a href="historial.html" class="nav-item">
+      <div class="nav-icon">📊</div>
+      <div class="nav-label">Historial</div>
+    </a>
+    <a href="cuenta.html" class="nav-item active">
+      <div class="nav-icon">👤</div>
+      <div class="nav-label">Cuenta</div>
+    </a>
+  </nav>
+
+  <script>
+    function logout() {
+      // Aquí podrías limpiar storage/sesión y redirigir
+      alert('Sesión cerrada');
+      window.location.href = 'login-ciudadano.html'; 
+    }
+  </script>
+</body>
+</html>
